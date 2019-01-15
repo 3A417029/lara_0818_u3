@@ -12,5 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $post = \App\Post::find(1);
+    foreach($post->comments as $comment) {
+        echo $comment->title.'<br>';
+    }
+});
+Route::get('/home', 'HomeController@index');
+Route::get('/hello/{name?}', ['as'=>'hello.index', 'uses'=>'HelloController@index']);
+Route::get('/posts', function (){
+    return view('posts.index');
+});
+Route::get('/posts/about', function (){
+    return view('posts.about');
+});
+Route::get('/posts/post', function (){
+    return view('posts.post');
 });

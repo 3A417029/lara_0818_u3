@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsFeatureInPostsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class AddIsFeatureInPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
-            $table->string('title',500)->change();
-            $table->boolean('is_feature')->default(false)->after('content');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -26,8 +26,6 @@ class AddIsFeatureInPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('comments');
     }
 }
