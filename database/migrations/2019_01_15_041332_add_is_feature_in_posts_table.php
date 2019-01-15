@@ -13,12 +13,10 @@ class AddIsFeatureInPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('posts', function (Blueprint $table) {
+            //
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -26,6 +24,8 @@ class AddIsFeatureInPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('posts', function (Blueprint $table) {
+            //
+        });
     }
 }
